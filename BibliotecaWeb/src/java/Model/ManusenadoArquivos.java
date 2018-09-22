@@ -1,0 +1,9 @@
+/*DENTRO DESSA CLASSE DEVERÁ HAVER 
+TODO OS COÓDIGOS PARA O MANUSEAMENTO
+DOS ARQUIVOS QUE IREMOS UTILIZAR
+*/
+package Model;
+
+public class ManusenadoArquivos {
+    
+}
