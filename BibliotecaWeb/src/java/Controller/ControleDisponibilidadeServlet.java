@@ -17,7 +17,6 @@ import javax.swing.JOptionPane;
  */
 @WebServlet(name = "ControleDisponibilidade", urlPatterns = {"/ControleDisponibilidade"})
 public class ControleDisponibilidadeServlet extends HttpServlet {
-
      @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
