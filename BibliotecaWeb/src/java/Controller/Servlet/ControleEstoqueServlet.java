@@ -16,28 +16,29 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "ControleEstoqueServlet", urlPatterns = {"/ControleEstoqueServlet"})
 public class ControleEstoqueServlet extends HttpServlet {
 
-    ManipulaArquivos ma;
+    ManipulaArquivos ma = new ManipulaArquivos();
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String lerArquivos = ma.LerArquivos("ArquivosTXT/", "Livros.txt");
+        String lerArquivos = ma.LerArquivos("Livros.txt");
         String[] conteudo = null;
-        int i = 0;
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+
             out.println("<!DOCTYPE html><html><head><title>Controle de estoque</title></head><body>");
             out.println("<h1>Controle</h1>");
-            
-            for (String x : lerArquivos.split("|")) {
-                conteudo[i] = x;
-                i++;
-            }
-            
+
+            String[] x = lerArquivos.split(",");
+
             out.println("<table border =1 whidth =100% >");
-            out.println("<tr> <th>Livros</th> <th>Disponiveis</th> </tr>");
-            
-            
-            out.println("<tr> <td></td> <td></td> </tr>");
-            
+            out.println("<tr><th>Livros</th> <th>Disponiveis</th> </tr>");
+
+            for(int i = 0; i < x.length; i++)
+            {
+                String[] valores = x[i].split(":");
+
+                out.println("<tr><td>" + valores[0] + "</td>");
+                out.println("<td>" + valores[1] + "</td> </tr>");
+            }
             out.println("</table></body></html>");
         }
     }
