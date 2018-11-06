@@ -23,6 +23,7 @@ public class ManipulaArquivos {
     private boolean confirma;
 //</editor-fold>
 
+    //<editor-fold defaultstate="collapsed" desc="Ler Arquivos">
     public String LerArquivos(String nomeArquivo) throws FileNotFoundException {
         String arquivo = "";
         try {
@@ -38,10 +39,11 @@ public class ManipulaArquivos {
         }
         return arquivo;
     }
+//</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Métodos Manipulador ">
     public void Manipulador(String nome, boolean verifica, boolean verificadisponivel) throws IOException {
-
+        
         ArrayList<String> lista = new ArrayList();
         File arquivo = new File("C:/Users/Leonardo/Documents/NetBeansProjects/Web.txt");
 
@@ -81,8 +83,8 @@ public class ManipulaArquivos {
         Date date = new Date(); //data
         DateFormat formato = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         String DataHora = formato.format(date);
-        File arquivo = new File("C:/Users/Leonardo/Documents/NetBeansProjects/Aluguel.txt");
-
+        File arquivo = new File("../Aluguel.txt");
+        
         FileWriter fw = new FileWriter(arquivo, true);
         BufferedWriter bw = new BufferedWriter(fw);
         bw.write("Livro: " + livro + " - Alugado no dia " + DataHora + " - por " + nome + " - CPF: " + cpf + " - Múmero: " + numero);
@@ -91,7 +93,7 @@ public class ManipulaArquivos {
         bw.newLine();
         bw.close();
         fw.close();
-
+        
     }
     //</editor-fold>
 
@@ -122,15 +124,15 @@ public class ManipulaArquivos {
             String arquivo = caminhoarquivo + nomearquivo;
             int c = 0;
             BufferedReader br = new BufferedReader(new FileReader(arquivo));
-
+            
             while (br.ready()) {
-
+                
                 String linha = br.readLine();
                 texto = linha;
                 conteudo[c] = texto.toString();
                 c++;
             }
-
+            
             return conteudo;
         } catch (FileNotFoundException ex) {
             //Logger.getLogger(ManipulaArquivo.class.getName()).log(Level.SEVERE, null, ex);
