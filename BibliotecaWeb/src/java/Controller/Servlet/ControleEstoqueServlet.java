@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "ControleEstoqueServlet", urlPatterns = {"/ControleEstoqueServlet"})
 public class ControleEstoqueServlet extends HttpServlet {
 
-    ManipulaArquivos ma = new ManipulaArquivos();
+    ManipulaArquivos ma;
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String lerArquivos = ma.LerArquivos("Livros.txt");

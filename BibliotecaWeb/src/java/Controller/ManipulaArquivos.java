@@ -21,11 +21,12 @@ public class ManipulaArquivos {
 
     /*A ideia dessa classe é tentar criar todos os métodos o mais genérico possível 
 para que todos possam reaproveitar os códigos descritos */
+    
     public String LerArquivos(String nomeArquivo) throws FileNotFoundException {
         String arquivo = null;
         try {
 
-            BufferedReader br = new BufferedReader(new FileReader("/home/igormodesto/Área de Trabalho/ArquivosTXT/Livros"));
+            BufferedReader br = new BufferedReader(new FileReader(""));
 
             while (br.ready()) {
                 arquivo += br.readLine() + ",";
@@ -74,6 +75,8 @@ para que todos possam reaproveitar os códigos descritos */
 //</editor-fold>
 
     }
+     //</editor-fold>
+
     //<editor-fold defaultstate="collapsed" desc="Escreve Arquivo">
 
     public void EscreveArquivo(String livro, boolean confirma, String nome, Integer numero, Integer cpf) throws IOException {
