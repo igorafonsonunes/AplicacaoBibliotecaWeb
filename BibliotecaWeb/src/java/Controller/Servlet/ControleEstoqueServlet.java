@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 public class ControleEstoqueServlet extends HttpServlet {
 
     ManipulaArquivos ma;
-    //teste
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String lerArquivos = ma.LerArquivos("Livros.txt");
         String[] conteudo = null;

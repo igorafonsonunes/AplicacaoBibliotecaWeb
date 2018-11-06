@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.CaminhoUsuario;
 import java.io.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -10,24 +11,24 @@ import java.util.logging.Logger;
 
 /**
  * @author igormodesto
+ *
+ * A ideia dessa classe é tentar criar todos os métodos o mais genérico possível
+ * para que todos possam reaproveitar os códigos descritos
  */
 public class ManipulaArquivos {
-    //<editor-fold defaultstate="collapsed" desc="Atributos para retorno">
 
+//<editor-fold defaultstate="collapsed" desc="Atributos para retorno">
     private boolean verifica;
     private boolean verificadisponivel;
     private boolean confirma;
 //</editor-fold>
 
-    /*A ideia dessa classe é tentar criar todos os métodos o mais genérico possível 
-para que todos possam reaproveitar os códigos descritos */
-    
     public String LerArquivos(String nomeArquivo) throws FileNotFoundException {
-        String arquivo = null;
+        String arquivo = "";
         try {
-
-            BufferedReader br = new BufferedReader(new FileReader(""));
-
+            CaminhoUsuario cau = new CaminhoUsuario();
+            String caminhoArquivo = cau.RetornarUsuario();
+            BufferedReader br = new BufferedReader(new FileReader(caminhoArquivo + nomeArquivo));
             while (br.ready()) {
                 arquivo += br.readLine() + ",";
             }
@@ -43,9 +44,8 @@ para que todos possam reaproveitar os códigos descritos */
 
         ArrayList<String> lista = new ArrayList();
         File arquivo = new File("C:/Users/Leonardo/Documents/NetBeansProjects/Web.txt");
-        
-        //<editor-fold defaultstate="collapsed" desc="Cria o arquivo e verifica se o mesmo existe">
 
+        //<editor-fold defaultstate="collapsed" desc="Cria o arquivo e verifica se o mesmo existe">
         if (!arquivo.exists()) {
             arquivo.createNewFile();
         }
@@ -62,7 +62,6 @@ para que todos possam reaproveitar os códigos descritos */
         fr.close();
 
 //</editor-fold>
-
         //<editor-fold defaultstate="collapsed" desc="Verifica se contem o livro">
         for (int i = 0; i < lista.size(); i++) {
             if (lista.get(i).contains(nome)) {
@@ -75,10 +74,9 @@ para que todos possam reaproveitar os códigos descritos */
 //</editor-fold>
 
     }
-     //</editor-fold>
+    //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Escreve Arquivo">
-
     public void EscreveArquivo(String livro, boolean confirma, String nome, Integer numero, Integer cpf) throws IOException {
         Date date = new Date(); //data
         DateFormat formato = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
