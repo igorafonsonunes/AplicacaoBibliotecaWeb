@@ -57,7 +57,7 @@ public class LoginClienteFunc extends HttpServlet {
         processRequest(request, response);
         
         ManipulaArquivos ma = new ManipulaArquivos();
-        ma.
+       // ma.
         
         
         
