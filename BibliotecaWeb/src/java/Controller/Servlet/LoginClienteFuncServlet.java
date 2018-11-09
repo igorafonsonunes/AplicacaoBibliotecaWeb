@@ -56,12 +56,21 @@ public class LoginClienteFuncServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
        
         ManipulaArquivos ma = new ManipulaArquivos();
+<<<<<<< HEAD:BibliotecaWeb/src/java/Controller/Servlet/LoginClienteFuncServlet.java
         ma.EscreveLogin(cpf,senha,entrar);
         if(ma.getEntrar() == true) {
             out.println("Acesso feito com sucesso");
         }else{
         out.println("CPF ou Senha estão errados");
         }
+=======
+       // ma.
+        
+        
+        
+        
+        
+>>>>>>> 52bb9ee4cd37e781efeca4d0cbcfee127eab8c41:BibliotecaWeb/src/java/Controller/Servlet/LoginClienteFunc.java
         
         
     }//</editor-fold>
