@@ -21,7 +21,9 @@ public class ManipulaArquivos {
     private boolean verifica;
     private boolean verificadisponivel;
     private boolean confirma;
+    private boolean entrar;
 //</editor-fold>
+    
 
     //<editor-fold defaultstate="collapsed" desc="Ler Arquivos">
     public String LerArquivos(String nomeArquivo) throws FileNotFoundException {
@@ -140,4 +142,42 @@ public class ManipulaArquivos {
         return null;
     }
 //</editor-fold>
+
+    //<editor-fold defaultstate="collapsed" desc="Escrevendo Login">
+    public void EscreveLogin(Integer cpf, Integer senha, boolean entrar)throws IOException{
+        
+        File cadastroLogin = new File("cadastroLogin.txt");
+        try{
+            if(!cadastroLogin.exists()){
+                cadastroLogin.createNewFile();
+            }  
+            //escrevendo no arq.Login
+            FileWriter fw2 = new FileWriter(cadastroLogin, true);
+            BufferedWriter bw2 = new BufferedWriter(fw2);
+            bw2.write("cpf" + cpf + "senha" + senha);
+            entrar = true;
+            this.entrar = entrar;
+            bw2.newLine();
+            bw2.close();
+            fw2.close();
+            //leitura
+            FileReader fr2 = new FileReader(cadastroLogin);
+            BufferedReader br2 = new BufferedReader(fr2);
+            while(br2.ready()){
+            String linha = br2.readLine();
+            System.out.println(linha);
+            }
+            br2.close();
+            fr2.close();
+        }catch(IOException lo){
+        lo.printStackTrace();
+        }
+        
+    }
+    //</editor-fold>
+//<editor-fold defaultstate="collapsed" desc="GET ENTRAR">
+    public boolean getEntrar() {
+        return this.entrar;
+    }
 }
+

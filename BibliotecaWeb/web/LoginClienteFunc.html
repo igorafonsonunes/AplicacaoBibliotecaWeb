@@ -2,21 +2,20 @@
 
 <html>
     <head>
-        <title>Login de Clientes e Funcionário</title>
+        <title>Biblioteca Web 1.0</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
+    
     <body>
-        <div>LOGIN</div> <br>
-        <form method="post"> 
+        <form action="LoginClienteFuncServlet" method="GET" > 
             <fieldset>
-                <legend>Dados de clientes ou Funcionarios</legend>
-                <h2>Coloque seus dados AQUI:</h2>
-                <p>CPF :<br> <input type="text" name="CPF" placeholder="Digite seu CPF..."></p>
+                <legend>LOGIN</legend>
+                <p>CPF :<br> <input type="text" name="cpf" placeholder="Digite seu CPF..."></p>
                 <p>SENHA :<br> <input type="password" name="Senha" placeholder="Digite sua senha..."></p>
-                <input type="button" name="entrat" value="Entrar"> <input type="reset"> 
-                <h4>Se cadastrar</h4>
-                <input type="submit" name="Cadastro" value="Cadastrar">
+                <p><a href="AlugarLivro.html"><input type="submit" value="Entrar"></a></p> 
+                <input type="reset" value="Limpar"> 
+                <input type="submit" name="Cadastro" value="Cadastre-se">
             </fieldset>
         </form>
     </body>

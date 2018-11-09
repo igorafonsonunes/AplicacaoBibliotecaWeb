@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Jean Mudesto
  */
-@WebServlet(name = "LoginClienteFunc", urlPatterns = {"/LoginClienteFunc"})
-public class LoginClienteFunc extends HttpServlet {
+@WebServlet(name = "LoginClienteFuncServlet", urlPatterns = {"/LoginClienteFuncServlet"})
+public class LoginClienteFuncServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -42,34 +42,33 @@ public class LoginClienteFunc extends HttpServlet {
         }
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    // <editor-fold defaultstate="collapsed" desc="GetLogin" >
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+                
+        Integer cpf = Integer.parseInt(request.getParameter("cpf"));          
+        Integer senha = Integer.parseInt(request. getParameter("Senha")); 
+        boolean entrar = false;
         
+        response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = response.getWriter();
+       
         ManipulaArquivos ma = new ManipulaArquivos();
-        ma.
+        ma.EscreveLogin(cpf,senha,entrar);
+        if(ma.getEntrar() == true) {
+            out.println("Acesso feito com sucesso");
+        }else{
+        out.println("CPF ou Senha estão errados");
+        }
         
         
-        
-        
-        
-        
-        
-    }
+    }//</editor-fold>
 
     /**
      * Handles the HTTP <code>POST</code> method.
-     *
+     *22
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
