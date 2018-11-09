@@ -146,13 +146,13 @@ public class ManipulaArquivos {
     //<editor-fold defaultstate="collapsed" desc="Escrevendo Login">
     public void EscreveLogin(Integer cpf, Integer senha, boolean entrar)throws IOException{
         
-        File cadastroLogin = new File("cadastroLogin.txt");
+        File cadastro = new File("../CadastroLogin.txt");
         try{
-            if(!cadastroLogin.exists()){
-                cadastroLogin.createNewFile();
+            if(!cadastro.exists()){
+                cadastro.createNewFile();
             }  
             //escrevendo no arq.Login
-            FileWriter fw2 = new FileWriter(cadastroLogin, true);
+            FileWriter fw2 = new FileWriter(cadastro, true);
             BufferedWriter bw2 = new BufferedWriter(fw2);
             bw2.write("cpf" + cpf + "senha" + senha);
             entrar = true;
@@ -161,7 +161,7 @@ public class ManipulaArquivos {
             bw2.close();
             fw2.close();
             //leitura
-            FileReader fr2 = new FileReader(cadastroLogin);
+            FileReader fr2 = new FileReader(cadastro);
             BufferedReader br2 = new BufferedReader(fr2);
             while(br2.ready()){
             String linha = br2.readLine();
@@ -169,8 +169,8 @@ public class ManipulaArquivos {
             }
             br2.close();
             fr2.close();
-        }catch(IOException lo){
-        lo.printStackTrace();
+        }catch(IOException e){
+        e.printStackTrace();
         }
         
     }
@@ -178,6 +178,6 @@ public class ManipulaArquivos {
 //<editor-fold defaultstate="collapsed" desc="GET ENTRAR">
     public boolean getEntrar() {
         return this.entrar;
-    }
+    }//</editor-fold>
 }
 
