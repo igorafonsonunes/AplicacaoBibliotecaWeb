@@ -16,20 +16,19 @@ import java.util.logging.Logger;
  * para que todos possam reaproveitar os códigos descritos
  */
 public class ManipulaArquivos {
-
-//<editor-fold defaultstate="collapsed" desc="Atributos para retorno">
+    
+    CaminhoUsuario cau = new CaminhoUsuario();
+    //<editor-fold defaultstate="collapsed" desc="Atributos para retorno">
     private boolean verifica;
     private boolean verificadisponivel;
     private boolean confirma;
     private boolean entrar;
 //</editor-fold>
     
-
     //<editor-fold defaultstate="collapsed" desc="Ler Arquivos">
     public String LerArquivos(String nomeArquivo) throws FileNotFoundException {
         String arquivo = "";
-        try {
-            CaminhoUsuario cau = new CaminhoUsuario();
+        try {        
             String caminhoArquivo = cau.RetornarUsuario();
             BufferedReader br = new BufferedReader(new FileReader(caminhoArquivo + nomeArquivo));
             while (br.ready()) {
@@ -66,6 +65,7 @@ public class ManipulaArquivos {
         fr.close();
 
 //</editor-fold>
+        
         //<editor-fold defaultstate="collapsed" desc="Verifica se contem o livro">
         for (int i = 0; i < lista.size(); i++) {
             if (lista.get(i).contains(nome)) {
@@ -175,7 +175,8 @@ public class ManipulaArquivos {
         
     }
     //</editor-fold>
-//<editor-fold defaultstate="collapsed" desc="GET ENTRAR">
+
+    //<editor-fold defaultstate="collapsed" desc="GET ENTRAR">
     public boolean getEntrar() {
         return this.entrar;
     }//</editor-fold>
