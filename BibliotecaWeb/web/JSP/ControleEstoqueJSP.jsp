@@ -18,30 +18,35 @@
         <h1>Gerenciamento dos Livros</h1>
         <form>
             <p>Cadastrar Livros : <input type="text" name="nomeLivro">
-                <button type="submit" onClick="<%
-                    String nomeLivro = request.getParameter("nomeLivro");
-                    if (nomeLivro != "" && nomeLivro != null) {
-                        boolean preenchimento = ma.EscreverArquivo("Livros", nomeLivro + " : 1");
-                        if (preenchimento) {
-                            JOptionPane.showMessageDialog(null, "Sucesso ao gravar livro", "Biblioteca Web", 1);
+                <button type="submit" onClick="CadastrarLivros()">Cadastrar</button>
+                <script>
+                    function CadastrarLivros() {
+                    <%
+                        String nomeLivro = request.getParameter("nomeLivro");
+                        if (nomeLivro != "" && nomeLivro != null) {
+                            boolean preenchimento = ma.EscreverArquivo("Livros", nomeLivro + " : 1");
+                            if (preenchimento) {
+                                JOptionPane.showMessageDialog(null, "Sucesso ao gravar livro", "Biblioteca Web", 1);
 
-                        } else {
-                            JOptionPane.showMessageDialog(null, "Erro ao gravar livro", "Biblioteca Web", 0);
+                            } else {
+                                JOptionPane.showMessageDialog(null, "Erro ao gravar livro", "Biblioteca Web", 0);
+                            }
                         }
-                    }%>" >Cadastrar</button>
+                    %>
+                    }
+                </script>
             </p>
         </form>
-        <table border =1 whidth =100% >
+     <h3>Livros</h3>
+       <table border =1 whidth =100% >
             <tr> <th>Livros</th> <th>Situação</th> </tr>
                     <%
                         String lerArquivos = ma.LerArquivos("Livros");
-
                         String[] conteudo = lerArquivos.split(",");
-
                         for (int i = 0; i < conteudo.length; i++) {
                             String[] valores = conteudo[i].split(":");
-                            if (valores[0] !=" ") {
-                            out.println("<tr><td>" + valores[0] + "</td>");
+                            if (valores[0] != " ") {
+                                out.println("<tr><td>" + valores[0] + "</td>");
                                 if (valores[1].trim().equals("0")) {
                                     out.println("<td>Indisponivel</td> </tr>");
                                 } else {
@@ -49,7 +54,6 @@
                                 }
                             }
                         }
-
                     %>
         </table>
     </body>

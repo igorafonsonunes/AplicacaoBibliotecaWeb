@@ -43,7 +43,7 @@ public class ManipulaArquivos {
 //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Escrever Arquivo">
-    public boolean EscreverArquivo(String nomeArquivo, String conteudoArquivo) {
+    public boolean EscreverArquivo(String nomeArquivo, String conteudoArquivo){
         boolean arquivoPreenchido = false;
         try {
             String caminhoArquivo = cau.RetornarUsuario();
@@ -53,7 +53,7 @@ public class ManipulaArquivos {
             bw.close();
             arquivoPreenchido = true;
 
-        } catch (Exception e) {
+        } catch (IOException e) {
             System.out.println(e);
         }
 
