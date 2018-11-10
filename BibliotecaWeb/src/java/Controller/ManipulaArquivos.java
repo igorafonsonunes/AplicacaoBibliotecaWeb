@@ -16,7 +16,7 @@ import java.util.logging.Logger;
  * para que todos possam reaproveitar os códigos descritos
  */
 public class ManipulaArquivos {
-    
+
     CaminhoUsuario cau = new CaminhoUsuario();
     //<editor-fold defaultstate="collapsed" desc="Atributos para retorno">
     private boolean verifica;
@@ -24,11 +24,11 @@ public class ManipulaArquivos {
     private boolean confirma;
     private boolean entrar;
 //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Ler Arquivos">
     public String LerArquivos(String nomeArquivo) throws FileNotFoundException {
         String arquivo = "";
-        try {        
+        try {
             String caminhoArquivo = cau.RetornarUsuario();
             BufferedReader br = new BufferedReader(new FileReader(caminhoArquivo + nomeArquivo));
             while (br.ready()) {
@@ -42,9 +42,28 @@ public class ManipulaArquivos {
     }
 //</editor-fold>
 
+    //<editor-fold defaultstate="collapsed" desc="Escrever Arquivo">
+    public boolean EscreverArquivo(String nomeArquivo, String conteudoArquivo) {
+        boolean arquivoPreenchido = false;
+        try {
+            String caminhoArquivo = cau.RetornarUsuario();
+            BufferedWriter bw = new BufferedWriter(new FileWriter(caminhoArquivo + nomeArquivo,true));
+            bw.write(conteudoArquivo);
+            bw.newLine();
+            bw.close();
+            arquivoPreenchido = true;
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        return arquivoPreenchido;
+    }
+    //</editor-fold>
+
     //<editor-fold defaultstate="collapsed" desc="Métodos Manipulador ">
     public void Manipulador(String nome, boolean verifica, boolean verificadisponivel) throws IOException {
-        
+
         ArrayList<String> lista = new ArrayList();
         File arquivo = new File("C:/Users/Leonardo/Documents/NetBeansProjects/Web.txt");
 
@@ -65,7 +84,6 @@ public class ManipulaArquivos {
         fr.close();
 
 //</editor-fold>
-        
         //<editor-fold defaultstate="collapsed" desc="Verifica se contem o livro">
         for (int i = 0; i < lista.size(); i++) {
             if (lista.get(i).contains(nome)) {
@@ -86,7 +104,7 @@ public class ManipulaArquivos {
         DateFormat formato = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         String DataHora = formato.format(date);
         File arquivo = new File("../Aluguel.txt");
-        
+
         FileWriter fw = new FileWriter(arquivo, true);
         BufferedWriter bw = new BufferedWriter(fw);
         bw.write("Livro: " + livro + " - Alugado no dia " + DataHora + " - por " + nome + " - CPF: " + cpf + " - Múmero: " + numero);
@@ -95,7 +113,7 @@ public class ManipulaArquivos {
         bw.newLine();
         bw.close();
         fw.close();
-        
+
     }
     //</editor-fold>
 
@@ -126,15 +144,15 @@ public class ManipulaArquivos {
             String arquivo = caminhoarquivo + nomearquivo;
             int c = 0;
             BufferedReader br = new BufferedReader(new FileReader(arquivo));
-            
+
             while (br.ready()) {
-                
+
                 String linha = br.readLine();
                 texto = linha;
                 conteudo[c] = texto.toString();
                 c++;
             }
-            
+
             return conteudo;
         } catch (FileNotFoundException ex) {
             //Logger.getLogger(ManipulaArquivo.class.getName()).log(Level.SEVERE, null, ex);
@@ -144,13 +162,13 @@ public class ManipulaArquivos {
 //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Escrevendo Login">
-    public void EscreveLogin(Integer cpf, Integer senha, boolean entrar)throws IOException{
-        
+    public void EscreveLogin(Integer cpf, Integer senha, boolean entrar) throws IOException {
+
         File cadastro = new File("../CadastroLogin.txt");
-        try{
-            if(!cadastro.exists()){
+        try {
+            if (!cadastro.exists()) {
                 cadastro.createNewFile();
-            }  
+            }
             //escrevendo no arq.Login
             FileWriter fw2 = new FileWriter(cadastro, true);
             BufferedWriter bw2 = new BufferedWriter(fw2);
@@ -163,16 +181,16 @@ public class ManipulaArquivos {
             //leitura
             FileReader fr2 = new FileReader(cadastro);
             BufferedReader br2 = new BufferedReader(fr2);
-            while(br2.ready()){
-            String linha = br2.readLine();
-            System.out.println(linha);
+            while (br2.ready()) {
+                String linha = br2.readLine();
+                System.out.println(linha);
             }
             br2.close();
             fr2.close();
-        }catch(IOException e){
-        e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        
+
     }
     //</editor-fold>
 
@@ -181,4 +199,3 @@ public class ManipulaArquivos {
         return this.entrar;
     }//</editor-fold>
 }
-

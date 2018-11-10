@@ -15,7 +15,7 @@ public class CaminhoUsuario {
                     + "AplicacaoBibliotecaWeb/BibliotecaWeb/arquivostxt/"; 
         }
         else {
-            caminhoUsuario = "C:/Users/" + usuario + "/Documents/NetBeansProjects/BibliotecaWeb/arquivostxt";
+            caminhoUsuario = "C:/Users/" + usuario + "/Documents/NetBeansProjects/BibliotecaWeb/arquivostxt/";
         }
         return caminhoUsuario;
     }
