@@ -43,11 +43,11 @@ public class ManipulaArquivos {
 //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Escrever Arquivo">
-    public boolean EscreverArquivo(String nomeArquivo, String conteudoArquivo){
+    public boolean EscreverArquivo(String nomeArquivo, String conteudoArquivo) {
         boolean arquivoPreenchido = false;
         try {
             String caminhoArquivo = cau.RetornarUsuario();
-            BufferedWriter bw = new BufferedWriter(new FileWriter(caminhoArquivo + nomeArquivo,true));
+            BufferedWriter bw = new BufferedWriter(new FileWriter(caminhoArquivo + nomeArquivo, true));
             bw.write(conteudoArquivo);
             bw.newLine();
             bw.close();
@@ -187,6 +187,29 @@ public class ManipulaArquivos {
             }
             br2.close();
             fr2.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+    //</editor-fold>
+
+    //<editor-fold defaultstate="collapsed" desc="Cadastrando dados">
+    public void CadastroClienteFunc(String linha, boolean entrar) throws IOException {
+
+        File cadastro = new File("C://Users/RODOLPHO/Documents/NetBeans/AplicacaoBibliotecaWeb-master/BibliotecaWeb/arquivostxt/CadastroClienteFuncionario.txt");
+        try {
+            if (!cadastro.exists()) {
+                cadastro.createNewFile();
+            }
+            //escrevendo no arq.Login
+            BufferedWriter bw = new BufferedWriter(new FileWriter(cadastro, true));
+            bw.write(linha);
+            bw.newLine();
+            bw.close();
+            entrar = true;
+            this.entrar = entrar;
+
         } catch (IOException e) {
             e.printStackTrace();
         }
