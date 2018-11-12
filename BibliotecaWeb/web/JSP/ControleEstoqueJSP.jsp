@@ -15,46 +15,50 @@
         <title>Controle de Estoque</title>
     </head>
     <body>
-        <h1>Gerenciamento dos Livros</h1>
-        <form>
-            <p>Cadastrar Livros : <input type="text" name="nomeLivro">
-                <button type="submit" onClick="CadastrarLivros()">Cadastrar</button>
-                <script>
-                    function CadastrarLivros() {
-                    <%
-                        String nomeLivro = request.getParameter("nomeLivro");
-                        if (nomeLivro != "" && nomeLivro != null) {
-                            boolean preenchimento = ma.EscreverArquivo("Livros", nomeLivro + " : 1");
-                            if (preenchimento) {
-                                JOptionPane.showMessageDialog(null, "Sucesso ao gravar livro", "Biblioteca Web", 1);
+        <fieldset style="position: relative; float:left; height:75px ">
+            <legend>Gerenciamento dos Livros</legend>
+            <form>
+                <p>Cadastrar Livros : <input type="text" name="nomeLivro">
+                    <button type="submit" onClick="CadastrarLivros()">Cadastrar</button>
+                    <script>
+                        function CadastrarLivros() {
+                        <%
+                            String nomeLivro = request.getParameter("nomeLivro");
+                            if (nomeLivro != "" && nomeLivro != null) {
+                                boolean preenchimento = ma.EscreverArquivo("Livros", nomeLivro + " : 1");
+                                if (preenchimento) {
+                                    JOptionPane.showMessageDialog(null, "Sucesso ao gravar livro", "Biblioteca Web", 1);
 
-                            } else {
-                                JOptionPane.showMessageDialog(null, "Erro ao gravar livro", "Biblioteca Web", 0);
-                            }
-                        }
-                    %>
-                    }
-                </script>
-            </p>
-        </form>
-     <h3>Livros</h3>
-       <table border =1 whidth =100% >
-            <tr> <th>Livros</th> <th>Situação</th> </tr>
-                    <%
-                        String lerArquivos = ma.LerArquivos("Livros");
-                        String[] conteudo = lerArquivos.split(",");
-                        for (int i = 0; i < conteudo.length; i++) {
-                            String[] valores = conteudo[i].split(":");
-                            if (valores[0] != " ") {
-                                out.println("<tr><td>" + valores[0] + "</td>");
-                                if (valores[1].trim().equals("0")) {
-                                    out.println("<td>Indisponivel</td> </tr>");
                                 } else {
-                                    out.println("<td>Disponivel</td> </tr>");
+                                    JOptionPane.showMessageDialog(null, "Erro ao gravar livro", "Biblioteca Web", 0);
                                 }
                             }
+                        %>
                         }
-                    %>
-        </table>
+                    </script>
+                </p>
+            </form>
+        </fieldset>
+        <fieldset style="position: relative; height:100%; float:left; width:305px  ; margin-top: 0px; margin-right: 600px;" >
+            <legend>Livros</legend>
+            <table border =1 whidth =100% >
+                <tr> <th>Livros</th> <th>Situação</th> </tr>
+                        <%
+                            String lerArquivos = ma.LerArquivos("Livros");
+                            String[] conteudo = lerArquivos.split(",");
+                            for (int i = 0; i < conteudo.length; i++) {
+                                String[] valores = conteudo[i].split(":");
+                                if (valores[0] != " ") {
+                                    out.println("<tr><td>" + valores[0] + "</td>");
+                                    if (valores[1].trim().equals("0")) {
+                                        out.println("<td>Indisponivel</td> </tr>");
+                                    } else {
+                                        out.println("<td>Disponivel</td> </tr>");
+                                    }
+                                }
+                            }
+                        %>
+            </table>
+        </fieldset>
     </body>
 </html>

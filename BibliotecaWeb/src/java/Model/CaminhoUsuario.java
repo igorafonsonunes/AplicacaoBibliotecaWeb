@@ -14,6 +14,9 @@ public class CaminhoUsuario {
             caminhoUsuario = "/media/igormodesto/LinuxBase/Arquivos/TrabalhoBibliotecaWeb/"
                     + "AplicacaoBibliotecaWeb/BibliotecaWeb/arquivostxt/"; 
         }
+        else if (usuario.equals("RODOLPHO")){
+            caminhoUsuario = "C://Users/RODOLPHO/Documents/NetBeans/AplicacaoBibliotecaWeb-master/BibliotecaWeb/arquivostxt/";
+        }
         else {
             caminhoUsuario = "C:/Users/" + usuario + "/Documents/NetBeansProjects/BibliotecaWeb/arquivostxt/";
         }

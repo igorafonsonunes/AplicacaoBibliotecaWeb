@@ -196,8 +196,8 @@ public class ManipulaArquivos {
 
     //<editor-fold defaultstate="collapsed" desc="Cadastrando dados">
     public void CadastroClienteFunc(String linha, boolean entrar) throws IOException {
-
-        File cadastro = new File("C://Users/RODOLPHO/Documents/NetBeans/AplicacaoBibliotecaWeb-master/BibliotecaWeb/arquivostxt/CadastroClienteFuncionario.txt");
+        String caminhoArquivo = cau.RetornarUsuario();
+        File cadastro = new File(caminhoArquivo+"CadastroClienteFuncionario.txt");
         try {
             if (!cadastro.exists()) {
                 cadastro.createNewFile();

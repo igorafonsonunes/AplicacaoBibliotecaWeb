@@ -14,23 +14,25 @@
         <title>Contole de Aluguel</title>
     </head>
     <body>
-        <h1>Clientes</h1>
-        <table border =1 whidth =100%>
-            <tr> <th>Clientes</th> <th>Livro</th> <th>Situação</th> </tr>  
-                    <%
-                        String lerArquivos = ma.LerArquivos("Aluguel");
-                        String[] conteudo = lerArquivos.split(",");
-                        for (int i = 0; i < conteudo.length; i++) {
-                            String[] valores = conteudo[i].split(":");
-                            out.println("<tr><td>" + valores[0] + "</td>");
-                            out.println("<td>" + valores[1] + "</td>");
-                            if (valores[2].trim().equals("1")) {
-                                out.println("<td>Normal</td></tr>");
-                            } else {
-                                out.println("<td>Atrasado</td></tr>");
+        <fieldset style="position:realative; height:100%; float:left;">
+            <legend>Controle de Aluguel</legend>
+            <table border =1 whidth =100%>
+                <tr> <th>Clientes</th> <th>Livro</th> <th>Situação</th> </tr>  
+                        <%
+                            String lerArquivos = ma.LerArquivos("Aluguel");
+                            String[] conteudo = lerArquivos.split(",");
+                            for (int i = 0; i < conteudo.length; i++) {
+                                String[] valores = conteudo[i].split(":");
+                                out.println("<tr><td>" + valores[0] + "</td>");
+                                out.println("<td>" + valores[1] + "</td>");
+                                if (valores[2].trim().equals("1")) {
+                                    out.println("<td>Normal</td></tr>");
+                                } else {
+                                    out.println("<td>Atrasado</td></tr>");
+                                }
                             }
-                        }
-                    %>
-        </table>
+                        %>
+            </table>
+        </fieldset>
     </body>
 </html>
