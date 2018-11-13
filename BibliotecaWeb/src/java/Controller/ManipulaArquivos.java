@@ -161,43 +161,11 @@ public class ManipulaArquivos {
     }
 //</editor-fold>
 
-    //<editor-fold defaultstate="collapsed" desc="Escrevendo Login">
-    public void EscreveLogin(Integer cpf, Integer senha, boolean entrar) throws IOException {
-
-        File cadastro = new File("../CadastroLogin.txt");
-        try {
-            if (!cadastro.exists()) {
-                cadastro.createNewFile();
-            }
-            //escrevendo no arq.Login
-            FileWriter fw2 = new FileWriter(cadastro, true);
-            BufferedWriter bw2 = new BufferedWriter(fw2);
-            bw2.write("cpf" + cpf + "senha" + senha);
-            entrar = true;
-            this.entrar = entrar;
-            bw2.newLine();
-            bw2.close();
-            fw2.close();
-            //leitura
-            FileReader fr2 = new FileReader(cadastro);
-            BufferedReader br2 = new BufferedReader(fr2);
-            while (br2.ready()) {
-                String linha = br2.readLine();
-                System.out.println(linha);
-            }
-            br2.close();
-            fr2.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-    }
-    //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Cadastrando dados">
     public void CadastroClienteFunc(String linha, boolean entrar) throws IOException {
         String caminhoArquivo = cau.RetornarUsuario();
-        File cadastro = new File(caminhoArquivo+"CadastroClienteFuncionario.txt");
+        File cadastro = new File(caminhoArquivo+"");
         try {
             if (!cadastro.exists()) {
                 cadastro.createNewFile();
@@ -221,4 +189,14 @@ public class ManipulaArquivos {
     public boolean getEntrar() {
         return this.entrar;
     }//</editor-fold>
+
+    public void LerCadastro(Integer cpf, Integer senha, boolean entrar) throws IOException{
+        String  caminhoArquivo = cau.RetornarUsuario();
+        BufferedReader br2 = new BufferedReader(new FileReader("CadastroClienteFuncionario.txt"));
+        while(br2.ready()){
+            String linha = br2.readLine();
+            br2.close();
+            this.entrar = entrar;
+        }
+    }
 }
