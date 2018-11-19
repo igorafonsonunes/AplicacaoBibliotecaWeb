@@ -26,7 +26,7 @@ public class ManipulaArquivos {
 //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Ler Arquivos">
-    public String LerArquivos(String nomeArquivo) throws FileNotFoundException {
+    public String LerArquivos(String nome, String nomeArquivo) throws FileNotFoundException {
         String arquivo = "";
         try {
             String caminhoArquivo = cau.RetornarUsuario();
@@ -165,9 +165,10 @@ public class ManipulaArquivos {
     //<editor-fold defaultstate="collapsed" desc="Cadastrando dados">
     public void CadastroClienteFunc(String linha, boolean entrar) throws IOException {
         String caminhoArquivo = cau.RetornarUsuario();
-        File cadastro = new File(caminhoArquivo+"");
+        File cadastro = new File(caminhoArquivo+"CadastroClienteFuncionario");
         try {
             if (!cadastro.exists()) {
+
                 cadastro.createNewFile();
             }
             //escrevendo no arq.Login
@@ -181,8 +182,10 @@ public class ManipulaArquivos {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        
     }
+    
+    
     //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="GET ENTRAR">
@@ -190,13 +193,5 @@ public class ManipulaArquivos {
         return this.entrar;
     }//</editor-fold>
 
-    public void LerCadastro(Integer cpf, Integer senha, boolean entrar) throws IOException{
-        String  caminhoArquivo = cau.RetornarUsuario();
-        BufferedReader br2 = new BufferedReader(new FileReader("CadastroClienteFuncionario.txt"));
-        while(br2.ready()){
-            String linha = br2.readLine();
-            br2.close();
-            this.entrar = entrar;
-        }
-    }
 }
+
