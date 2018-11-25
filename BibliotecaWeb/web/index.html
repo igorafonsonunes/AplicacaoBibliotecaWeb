@@ -1,71 +1,25 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!DOCTYPE html>
+<!--O servlet desse cara é o LoginClienteFuncServlet-->
 <html>
     <head>
-        <title>Pagina principal</title>
+        <title>Biblioteca Web 1.0</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
-    <p>ESSA PAGINA DEVERA SER TROCADA PELA PAGINA DE LOGIN NO FINAL DO TRABALHO</p>
-        <div>Coloque os botẽs para abrir suas telas aqui</div>
-        <p><a href="JSP/ControleEstoqueJSP.jsp"><input type="submit" value="Controle Estoque Cliente"></a></p>
-        <p><a href="JSP/ControleAluguelJSP.jsp"> <button type="button">Acompanhar alugueis</button></a></p>
-        <p><a class href="Estante.html"> <input type="submit" value="Estante" > </a></p>
-        <p><a href="LoginClienteFunc.html"> <input type="submit" value="Logar"> </a></p>
-        <p/><a href="CadastroCienteFunc.html"><input type="button" value="Cadastro"></a></p>
+
+    <body>
+        <div style="position:realative; height:100%; float:bottom;  width:200px; margin: 0px auto;margin-top:100px"> 
+            <form action="LoginClienteFuncServlet" method="GET" >   
+                <h1>Portal Digital Biblioteca</h1>
+                <fieldset>
+                    <legend>LOGIN</legend>
+                    <p>CPF :<br> <input type="text" name="cpf" placeholder="Digite seu CPF..."></p>
+                    <p>SENHA :<br> <input type="password" name="senha" placeholder="Digite sua senha..."></p>
+                    <p><a href="AlugarLivro.html"> <input type="submit" value="Entrar"></a>
+                        <a href="CadastroCienteFunc.html"><input type="button" value="Cadastre-se"></a></p>            
+                </fieldset>
+            </form>
+        </div>
     </body>
 </html>
 

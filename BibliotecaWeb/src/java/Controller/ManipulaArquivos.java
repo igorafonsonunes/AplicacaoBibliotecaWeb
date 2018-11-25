@@ -26,7 +26,7 @@ public class ManipulaArquivos {
 //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Ler Arquivos">
-    public String LerArquivos(String nome, String nomeArquivo) throws FileNotFoundException {
+    public String LerArquivos(String nomeArquivo) throws FileNotFoundException {
         String arquivo = "";
         try {
             String caminhoArquivo = cau.RetornarUsuario();

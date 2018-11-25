@@ -33,7 +33,7 @@ public class LoginClienteFuncServlet extends HttpServlet {
 
         try {
             ManipulaArquivos ma = new ManipulaArquivos();
-            String lerCadastro = ma.LerArquivos("JeanMudesto", "CadastroClienteFuncionario.txt");
+            String lerCadastro = ma.LerArquivos("CadastroClienteFuncionario.txt");
 
             if ((RetorneComparacao(lerCadastro, cpf, senha))) {
                
