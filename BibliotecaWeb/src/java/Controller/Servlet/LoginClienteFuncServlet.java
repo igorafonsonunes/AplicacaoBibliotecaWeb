@@ -3,6 +3,7 @@ package Controller.Servlet;
 import Controller.ManipulaArquivos;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,7 +17,8 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "LoginClienteFuncServlet", urlPatterns = {"/LoginClienteFuncServlet"})
 public class LoginClienteFuncServlet extends HttpServlet {
 
-    // <editor-fold defaultstate="collapsed" desc="GetLogin" >
+    String Compartilhar;
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -29,25 +31,25 @@ public class LoginClienteFuncServlet extends HttpServlet {
         String cpf = request.getParameter("cpf");
         String senha = request.getParameter("senha");
         String linha = cpf + ";" + senha;
-        boolean entrar = false;
 
         try {
             ManipulaArquivos ma = new ManipulaArquivos();
-            String lerCadastro = ma.LerArquivos("CadastroClienteFuncionario.txt");
+            String lerCadastro = ma.LerArquivos("CadastroClienteFuncionario");
 
             if ((RetorneComparacao(lerCadastro, cpf, senha))) {
-               
-            out.println("<h2>Acesso feito com sucesso</h2>");
-                response.setCharacterEncoding("UTF-8");
-                response.getWriter().print("Seu CPF de acesso é :" + cpf);
+                request.setAttribute("compartilhar",Compartilhar);
+                RequestDispatcher rd = request.getRequestDispatcher ("PaginaPrincipalServlet");  
+                rd.forward(request, response);
+                
             } else {
                 out.println("<h2>CPF ou Senha estão errados</h2>");
+                out.println("<a href=\"index.html\"><input type=\"button\" value=\"Retornar\"></a></p>");
             }
         } catch (Exception e) {
             out.println(e.getMessage());
-        } 
+        }
 
-    }//</editor-fold>
+    }
 
     public boolean RetorneComparacao(String recebe, String cpf, String senha) {
         boolean entrar = false;
@@ -55,23 +57,12 @@ public class LoginClienteFuncServlet extends HttpServlet {
         for (int x = 0; x < conteudo.length; x++) {
             String[] valor = conteudo[x].split(";");
             String c = valor[4];
-            
-            
-            if (valor[2].contains(cpf) && c.contains(senha)) {
-                
-                entrar = true;
+            String b = valor[2];
+            if (b.equals(cpf) && c.equals(senha)) {
+                Compartilhar = valor[0] + "," + valor[1];
+                return entrar = true;
             }
         }
-        
-    return entrar;
+        return entrar;
     }
-   public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-   
-       System.out.println("Chamando sv");
-       super.service(request, response);
-   }
-   public void init(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-       System.out.println("Chamando sv");
-       super.init();
-   }
 }

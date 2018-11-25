@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "AlugarLivroServlet", urlPatterns = {"/AlugarLivroServlet"})
 public class AlugarLivroServlet extends HttpServlet {
 
- @Override
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String nome = request.getParameter("nome");
@@ -27,18 +27,20 @@ public class AlugarLivroServlet extends HttpServlet {
         Integer numero = Integer.parseInt(request.getParameter("telefone"));
         Integer cpf = Integer.parseInt(request.getParameter("cpf"));
         boolean confirma = false;
-        
+
         Date date = new Date();
         DateFormat formato = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         String DataHora = formato.format(date);
-        
+
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         
+        String conteudo = nome +":"+livro+":"+"0";
+
         ManipulaArquivos ma = new ManipulaArquivos();
-        ma.EscreveArquivo(livro, confirma, nome, numero, cpf);
-        
-        if (ma.getConfirma() == true) {
+        boolean gravacao = ma.EscreverArquivo("Aluguel",conteudo);
+
+        if (gravacao) {
             out.println("Parabéns " + nome + " livro alugado no dia " + DataHora);
         } else {
             out.println("Infelizmente nao foi possível fazer o aluguel");

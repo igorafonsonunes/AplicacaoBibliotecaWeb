@@ -33,6 +33,7 @@ public class CadastroClienteFunc extends HttpServlet {
 
             if (man.getEntrar() == true) {
                 out.println("<h2>Cadastro feito com sucesso</h2>");
+                out.println("<a href=\"index.html\"><input type=\"button\" value=\"Retornar página inicial\"><br><br>");
             } else {
                 out.println("<h2>Dados incorretos</h2>");
             }
